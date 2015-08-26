@@ -1,13 +1,17 @@
-var makeCrazyDancer = function(top, left, timeBetweenSteps) {
-  makeDancer.call(this,top,left,timeBetweenSteps);
-
+var MakeCrazyDancer = function(top, left, timeBetweenSteps) {
+  MakeDancer.call(this,top,left,timeBetweenSteps);
+  this.$node = $('<span class="dancer"><img src="src/powerpuff.png" alt="cat" height="30" width="30"></span>');
 };
 
-makeCrazyDancer.prototype = Object.create(makeDancer.prototype);
-makeCrazyDancer.prototype.constructor = makeCrazyDancer;
+MakeCrazyDancer.prototype = Object.create(MakeDancer.prototype);
+MakeCrazyDancer.prototype.constructor = MakeCrazyDancer;
 
-makeCrazyDancer.prototype.step = function() {
-  makeDancer.prototype.step.call(this);
+MakeCrazyDancer.prototype.step = function() {
+  MakeDancer.prototype.step.call(this);
+  var random = Math.random() * 100
+  if(Math.random() > .5){
+    random = -random;
+  }
+  this.setPosition(this.top + random, this.left + random);
 
-  this.$node.slideDown(2000);
 }
